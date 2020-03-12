@@ -1,8 +1,12 @@
 let express = require("express");
+let cors = require("cors");
 let shortid = require("shortid");
 let server = express();
 
 let users = [];
+
+server.use(express.json());
+server.use(cors());
 
 server.get("/", (_, res) => {
     res.send("Hello World!");
