@@ -52,6 +52,18 @@ function App() {
               }}>
                 Delete Me!
               </button>
+              <button onClick={e => {
+                e.preventDefault();
+                axios.put(`http://localhost:5000/api/users/${user.id}`, {
+                  ...user,
+                  name: "Super test user!"
+                }).then(fetchUsers).catch(err => {
+                  console.log(err.response);
+                  setError(true)
+                });
+              }}>
+                Change Me!
+              </button>
             </div>)}
           </div>
       }

@@ -56,9 +56,9 @@ server.delete("/api/users/:id", (req, res) => {
     }
 });
 
-server.put("/api/users/:id", (req, res) => {
+server.put("/api/users/:id", ({body, params}, res) => {
     try {
-        let user = users.find(u => u.id === req.params.id);
+        let user = users.find(u => u.id === params.id);
         if (user) {
             if (body.name && body.bio) {
                 if (typeof body.name === "string" && typeof body.bio === "string") {
